@@ -10,14 +10,15 @@ import os
 app = FastAPI()
 
 # Ruta del modelo y clave de API
-MODEL_PATH = "prediccion_clima.pkl"
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+MODEL_PATH = os.path.join(BASE_DIR, "model", "prediccion_clima.pkl")
 WEATHER_API_KEY = os.getenv("WEATHER_API_KEY")
 
 # Declaración global del modelo
 modelo = None
 
-# Cargar el modelo al iniciar la aplicación
-@app.on_event("Cargando el modelo")
+# Cargar el modelo al iniciar la aplicaciónw
+@app.on_event("startup")
 def load_model():
     global modelo
     try:
