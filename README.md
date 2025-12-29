@@ -13,8 +13,18 @@ API_Clima/
 ├── README.md                    # Este archivo
 ├── Dockerfile                   # Configuración para contenerización
 ├── requirements.txt             # Dependencias de Python
+├── data/                        # Datos de municipios y naves industriales
+│   ├── raw/                     # Datos sin procesar
+│   │   ├── CSV_Sucio_Naves.csv
+│   │   └── Municipios_Sucios.csv
+│   └── processed/               # Datos limpios y procesados
+│       ├── Municipios.csv
+│       └── Naves_Industriales.csv
 ├── model/                       # Modelo de ML entrenado para predicción climática
 │   └── prediccion_clima.pkl     # Modelo Random Forest
+├── notebooks/                   # Notebooks de preprocesamiento
+│   ├── Preprocesamiento_municipios.ipynb
+│   └── Preprocesamiento_naves.ipynb
 └── src/
     ├── api/
     │   └── API_Logisticlima.py  # API REST con FastAPI
@@ -27,6 +37,35 @@ API_Clima/
             ├── Municipio.jpg
             └── Nave_Industrial.jpg
 ```
+
+---
+
+## Preprocesamiento de datos
+
+El proyecto incluye notebooks de Jupyter para el preprocesamiento de los datos de ubicaciones (municipios y naves industriales). Los datos crudos se encuentran en `data/raw/` y los datos procesados se guardan en `data/processed/`.
+
+### Notebooks disponibles
+
+| Notebook | Entrada | Salida | Descripción |
+|----------|---------|--------|-------------|
+| `Preprocesamiento_municipios.ipynb` | `Municipios_Sucios.csv` | `Municipios.csv` | Filtra municipios del Estado de México, elimina columnas innecesarias y estandariza nombres de columnas |
+| `Preprocesamiento_naves.ipynb` | `CSV_Sucio_Naves.csv` | `Naves_Industriales.csv` | Limpia datos de naves industriales, elimina columnas innecesarias y formatea nombres |
+
+### Estructura de datos procesados
+
+**Municipios.csv:**
+| Columna | Descripción |
+|---------|-------------|
+| `nombre` | Nombre del municipio |
+| `lat` | Latitud |
+| `lon` | Longitud |
+
+**Naves_Industriales.csv:**
+| Columna | Descripción |
+|---------|-------------|
+| `nombre` | Nombre del parque industrial |
+| `latitud` | Latitud |
+| `longitud` | Longitud |
 
 ---
 
