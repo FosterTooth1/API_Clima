@@ -1,1 +1,30 @@
+# Python y compilados
+__pycache__/
+*.py[cod]
+*$py.class
+*.pkl
+
+# Entornos virtuales
+venv/
+env/
+.venv
+node_modules/
+
+# Jupyter notebooks
+.ipynb_checkpoints/
+
+# Variables de entorno y configuración
 .env
+.env.*
+.env.local
+
+# IDE y sistema operativo
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Distribución y logs
+*.egg-info/
+*.egg
+*.log
